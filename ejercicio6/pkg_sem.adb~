@@ -1,0 +1,14 @@
+package body Pkg_Sem is
+   
+   protected body Sem_T is
+      
+      entry Wait when Valor_Sem =1 is
+      begin
+	 Valor_Sem:=0;
+      end Wait;
+      procedure Signal is
+      begin 
+	 Valor_Sem:=1;
+      end Signal
+   end Sem_T;
+   end Pkg_Sem;

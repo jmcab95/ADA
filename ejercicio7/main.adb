@@ -1,0 +1,203 @@
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Task_Identification;use Ada.Task_Identification;
+with Pkg_Monitor; use Pkg_Monitor;
+with Ada.Text_IO;use Ada.Text_IO;
+
+procedure Main is
+   Monitor:Monitor_T;
+   Msg_Aux:Unbounded_String;
+   
+   task type Writer_T;
+   task type Reader_T;
+   task body Writer_T is
+      
+   begin 
+      for I in Integer range 1 .. 5 loop
+	 delay 0.1;
+	 New_Line;
+	 Imprimir_Msg(Monitor, " Soy la tarea: "&Image(Current_Task ));
+	 New_Line;
+	 delay 3.0;
+      end loop;
+   end Writer_T;
+   
+   task body Reader_T is 
+      
+   begin 
+      for I in Integer range 1 .. 5 loop
+	 delay 3.0;
+	 Get_Msg(Monitor,Msg_Aux);
+	 while Msg_Aux="-1" loop
+	    Get_Msg(Monitor,Msg_Aux);
+	 end loop;
+	 
+	 Imprimir_Msg(Monitor, "[" &Image(Current_Task)&"]:" & To_String(Msg_Aux) );
+	 New_Line;
+      end loop;
+      
+      end Reader_T;
+      W1:Writer_T;
+      W2:Writer_T;
+      R1:Reader_T;
+      R2:Reader_T;
+      
+      
+begin
+   
+   Imprimir_Msg(Monitor, "------- Inicio del programa main-------");
+   delay 60.0;
+   abort W1;
+   abort W2;
+   abort R1;
+   abort R2;
+   
+   Imprimir_Msg(Monitor,"-------Fin del programa main-------");
+   end Main;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
